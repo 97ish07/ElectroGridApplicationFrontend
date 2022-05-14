@@ -1,1 +1,2 @@
 # ElectroGridApplicationFrontend
+# About the Project
