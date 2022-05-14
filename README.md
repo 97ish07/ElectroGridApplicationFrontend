@@ -5,6 +5,7 @@
 
 • Client-components: jQuery, Ajax for DC
 # Acknowledgment
-![SLIIT_Logo_Crest](https://user-images.githubusercontent.com/81189012/168448564-fd824b0a-b595-41a2-becb-fdcb21582e4c.png)
+
+![Sri-Lanka-Institute-of-Technology-2](https://user-images.githubusercontent.com/81189012/168448674-4788f61a-d385-456c-a2fe-916f68a7b352.jpg)
 
 This is a individual project done for PAF module in 3rd year, SLIIT
