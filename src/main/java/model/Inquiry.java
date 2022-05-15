@@ -60,7 +60,8 @@ public class Inquiry
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while inserting the inquiry.";
+			 //output = "Error while inserting the inquiry.";
+			 output = "{\"status\":\"error\", \"data\": \"Error while inserting the inquiry.\"}"; 
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
