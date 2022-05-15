@@ -1,7 +1,10 @@
 # ElectroGridApplicationFrontend
 # About the Project
-This is the frontend development for inquiry management function in eletrogrid web application.
-customers can add , view , update and delete inquiries .
+ElectroGrid (EG) is the company who maintains the power grid of the country. They have a system to 
+monitor the power consumption of the users, generate the monthly bills and automatically send to the 
+users, and accept the online payments from the users.
+This is the frontend development for inquiry management function in eletrogrid web application and also this is rich web-based application using the Form and Grid pattern to perform CRUD operations 
+
 # Tools and Technologies used
 • View: HTML, CSS, Bootstrap 
 
