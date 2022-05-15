@@ -17,7 +17,9 @@ public class Inquiry
 		 con = DriverManager.getConnection("jdbc:mysql://localhost/inquirydb", "root", "");
 		 }
 		 catch (Exception e)
-		 {e.printStackTrace();}
+		 {
+			 e.printStackTrace();
+		 }
 		 
 		 return con;
 	 }
@@ -60,7 +62,7 @@ public class Inquiry
 		 }
 		 catch (Exception e)
 		 {
-			 //output = "Error while inserting the inquiry.";
+	
 			 output = "{\"status\":\"error\", \"data\": \"Error while inserting the inquiry.\"}"; 
 			 System.err.println(e.getMessage());
 		 }
@@ -81,12 +83,14 @@ public class Inquiry
 			 {return "Error while connecting to the database for reading."; }
 			 
 			 // Prepare the html table to be displayed
-			 output = "<table border='1'><tr><th>Inquiry ID</th><th> Name</th><th>Email</th>" +
-					 "<th>Contact Number</th>" +
-					 "<th>Address</th>" +
-					 "<th>Inquiry Type</th>" +
-					 "<th>Message</th></tr>"+
-					 "<th>Update</th><th>Delete</th></tr>";
+			 output = "<table border='1' class='table table-striped'><tr>"
+					 + "<th>Name</th>"
+					 + "<th>E-mail</th>"
+					 + "<th>Contact Number</th>"
+					 + "<th>Address</th>"
+					 + "<th>Inquiry Type</th>"
+					 + "<th>Message</th>"
+					 + "<th>Update</th><th>Delete</th></tr>";
 					 
 			
 			 String query = "select * from inquiries";
@@ -117,8 +121,8 @@ public class Inquiry
 				 
 				 // buttons
 				 
-				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-success' data-noticeid='" + inquiryID+"'></td>"
-						 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-noticeid='" + inquiryID + "'></td></tr>";
+				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-success' data-inquiryid='" + inquiryID+"'></td>"
+						 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-inquiryid='" + inquiryID + "'></td></tr>";
 			 }
 			 
 			 con.close();
@@ -134,7 +138,7 @@ public class Inquiry
 	}
 	
 	//update
-	public String updateInquiries(String ID, String nameIn, String emailIn, String contactNumberIn, String addressIn, String inquiryTypeIn, String messageIn)
+	public String updateInquiries(String inquiryID, String name, String email, String contactNumber, String address, String inquiryType, String message)
 	{
 		 String output = "";
 		 
@@ -151,13 +155,13 @@ public class Inquiry
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			 
 			 // binding values
-			 preparedStmt.setString(1, nameIn);
-			 preparedStmt.setString(2, emailIn);
-			 preparedStmt.setString(3, contactNumberIn);
-			 preparedStmt.setString(4, addressIn);
-			 preparedStmt.setString(5, inquiryTypeIn);
-			 preparedStmt.setString(6, messageIn);
-			 preparedStmt.setInt(7, Integer.parseInt(ID));
+			 preparedStmt.setString(1, name);
+			 preparedStmt.setString(2, email);
+			 preparedStmt.setString(3, contactNumber);
+			 preparedStmt.setString(4, address);
+			 preparedStmt.setString(5, inquiryType);
+			 preparedStmt.setString(6, message);
+			 preparedStmt.setInt(7, Integer.parseInt(inquiryID));
 			 
 			 
 			 // execute the statement
@@ -169,11 +173,9 @@ public class Inquiry
 					 NewInquirys + "\"}";
 			 
 			 
-			 //output = "Updated successfully";
 		 }
 		 catch (Exception e)
 		 {
-			 //output = "Error while updating the inquiry connection request.";
 			 output = "{\"status\":\"error\", \"data\":\"Error while updating the inquiry.\"}";
 			 System.err.println(e.getMessage());
 		 }
@@ -183,41 +185,40 @@ public class Inquiry
 	}
 	
 	// delete
-	public String deleteInquiries(String inquiryID )
+	public String deleteInquiries(String inquiryID)
 	{
-		 String output = "";
-		 
-		 try
-		 {
-		 
-			 Connection con = connect();
-			 
-			 if (con == null)
-			 {return "Error while connecting to the database for deleting."; }
-			 
-			 // create a prepared statement
-			 String query = "delete from inquiries where inquiryID=?";
-			 
-			 PreparedStatement preparedStmt = con.prepareStatement(query);
-			 
-			 // binding values
-			 preparedStmt.setInt(1, Integer.parseInt(inquiryID ));
-			 
-			 // execute the statement
-			 preparedStmt.execute();
-			 con.close();
-			 
-			 String NewInquirys = readInquiries();
-			 output = "{\"status\":\"success\", \"data\": \"" + NewInquirys + "\"}"; 
-			 
-			 //output = "Deleted successfully";
-		 }
-		 catch (Exception e)
-		 {
-			 //output = "Error while deleting the inquiry.";
-			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the notice.\"}";
-			 System.err.println(e.getMessage());
-		 }
-		 return output;
-		 }
+	 String output = "";
+	 try
+	  {
+	  Connection con = connect();
+	  if (con == null)
+	  {
+	  return "Error while connecting to the database for deleting.";
+	  }
+	  
+	  // Create a prepared statement
+	  String query = "delete from inquiries where inquiryID=?";
+	  PreparedStatement preparedStmt = con.prepareStatement(query);
+	  
+	  // Binding values
+	  preparedStmt.setInt(1, Integer.parseInt(inquiryID));
+
+	  // Execute the statement
+	  preparedStmt.execute();
+	  con.close();
+	  
+	  String NewInquirys = readInquiries();
+	  output = "{\"status\":\"success\", \"data\": \"" + NewInquirys + "\"}"; 
+	 
+	  }
+	 catch (Exception e)
+	  {
+	  
+	  output = "{\"status\":\"error\", \"data\": \"Error while deleting the Inquiry.\"}";
+	  System.err.println(e.getMessage());
+	  }
+	 return output; 
 	}
+}
+
+	

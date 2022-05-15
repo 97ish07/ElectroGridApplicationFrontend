@@ -26,7 +26,7 @@ Contact Number:<input id="contactNumber" name="contactNumber" type="text" class=
 Address:<input id="address" name="address" type="text" class="form-control"><br>
 Inquiry Type:<input id="inquiryType" name="inquiryType" type="text" class="form-control"><br>
 Message:<input id="message" name="message" type="text" class="form-control"><br>
-<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
+<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary btn-lg">
 <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
 </form>
 <br>
