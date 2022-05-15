@@ -53,15 +53,20 @@ public class Inquiry
 			 preparedStmt.execute();
 			 con.close();
 			 
-			 output = "Inserted successfully";
+			 String NewInquirys = readInquiries();
+			 output = "{\"status\":\"success\", \"data\": \"" + 
+					 NewInquirys + "\"}"; 
+			 
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while inserting the inquiry connection request.";
+			 output = "Error while inserting the inquiry.";
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
 	}
+	
+	// view
 	
 	public String readInquiries()
 	{
@@ -79,7 +84,9 @@ public class Inquiry
 					 "<th>Contact Number</th>" +
 					 "<th>Address</th>" +
 					 "<th>Inquiry Type</th>" +
-					 "<th>Message</th></tr>";
+					 "<th>Message</th></tr>"+
+					 "<th>Update</th><th>Delete</th></tr>";
+					 
 			
 			 String query = "select * from inquiries";
 			 Statement stmt = con.createStatement();
@@ -98,8 +105,8 @@ public class Inquiry
 				 
 				 
 				 // Add into the html table
-				 output += "<tr><td>" +  inquiryID + "</td>";
-				 output += "<td>" + name + "</td>";
+				 output += "<tr><td><input id=\'hidItemIDUpdate\' name=\'hidItemIDUpdate\' type=\'hidden\' value=\'"
+							+ inquiryID + "'>" +  name + "</td>";
 				 output += "<td>" + email + "</td>";
 				 output += "<td>" + contactNumber + "</td>";
 				 output += "<td>" + address + "</td>";
@@ -108,8 +115,11 @@ public class Inquiry
 				 
 				 
 				 // buttons
-				 //output += "<td><input name='btnUpdate' type='button' value='Update' class='btn btn-secondary'></td>" + "<td><form method='post' action='inquiryrequests.jsp'>" + "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>" + "<input name='inquiryId' type='hidden' value='" + inquiryID + "'>" + "</form></td></tr>";
+				 
+				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-success' data-noticeid='" + inquiryID+"'></td>"
+						 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-noticeid='" + inquiryID + "'></td></tr>";
 			 }
+			 
 			 con.close();
 			 // Complete the html table
 			 output += "</table>";
