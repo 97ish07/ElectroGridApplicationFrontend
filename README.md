@@ -1,5 +1,7 @@
 # ElectroGridApplicationFrontend
 # About the Project
+This is the frontend development for inquiry management function in eletrogrid web application.
+customers can add , view , update and delete inquiries .
 # Tools and Technologies used
 • View: HTML, CSS, Bootstrap 
 
