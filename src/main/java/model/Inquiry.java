@@ -81,13 +81,14 @@ public class Inquiry
 			 {return "Error while connecting to the database for reading."; }
 			 
 			 // Prepare the html table to be displayed
-			 output = "<table border='1'><tr><th>Inquiry ID</th><th> Name</th><th>Email</th>" +
-					 "<th>Contact Number</th>" +
-					 "<th>Address</th>" +
-					 "<th>Inquiry Type</th>" +
-					 "<th>Message</th>"+
-					 "<th>Update</th>"+
-					 "<th>Delete</th></tr>";
+			 output = "<table border='1' class='table table-striped'><tr>"
+					 + "<th>Name</th>"
+					 + "<th>E-mail</th>"
+					 + "<th>Contact Number</th>"
+					 + "<th>Address</th>"
+					 + "<th>Inquiry Type</th>"
+					 + "<th>Message</th>"
+					 + "<th>Update</th><th>Delete</th></tr>";
 					 
 			
 			 String query = "select * from inquiries";
