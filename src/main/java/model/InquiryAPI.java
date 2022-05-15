@@ -73,14 +73,23 @@ public class InquiryAPI extends HttpServlet {
 	
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Map paras = getParasMap(request);
+		String output = inquiryObj.updateInquiries(paras.get("hidItemIDSave").toString(),
+						paras.get("name").toString(),
+						paras.get("email").toString(),
+						paras.get("contactNumber").toString(),
+						paras.get("address").toString(),
+						paras.get("inquiryType").toString(),
+						paras.get("message").toString());
+		response.getWriter().write(output); 
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
+	
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Map paras = getParasMap(request);
+		String output = inquiryObj.deleteInquiries(paras.get("inquiryID").toString());
+		response.getWriter().write(output); 
+		
 	}
 
 }
