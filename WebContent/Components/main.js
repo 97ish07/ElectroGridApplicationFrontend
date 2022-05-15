@@ -79,13 +79,13 @@ $(document).on("click", ".btnUpdate", function(event)
 	console.log("Update",$("#hidItemIDSave").val());
 	$("#hidItemIDSave").val($(this).closest("tr").find('#hidItemIDUpdate').val());
 	 $("#hidItemIDSave").val($(this).data("inquiryID"));
-	 //$("#noticeId").val($(this).closest("tr").find('td:eq(0)').text());
+	 
 	 $("#name").val($(this).closest("tr").find('td:eq(0)').text());
 	 $("#email").val($(this).closest("tr").find('td:eq(1)').text());
 	 $("#contactNumber").val($(this).closest("tr").find('td:eq(2)').text());
 	 $("#address").val($(this).closest("tr").find('td:eq(3)').text());
-	 $("#inquiryType").val($(this).closest("tr").find('td:eq(3)').text());
-	 $("#message").val($(this).closest("tr").find('td:eq(3)').text());
+	 $("#inquiryType").val($(this).closest("tr").find('td:eq(4)').text());
+	 $("#message").val($(this).closest("tr").find('td:eq(5)').text());
 });
 
 $(document).on("click", ".btnRemove", function(event)
