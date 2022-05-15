@@ -60,7 +60,8 @@ public class Inquiry
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while inserting the inquiry.";
+			 //output = "Error while inserting the inquiry.";
+			 output = "{\"status\":\"error\", \"data\": \"Error while inserting the inquiry.\"}"; 
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
@@ -163,11 +164,17 @@ public class Inquiry
 			 preparedStmt.execute();
 			 con.close();
 			 
-			 output = "Updated successfully";
+			 String NewInquirys = readInquiries();
+			 output = "{\"status\":\"success\", \"data\": \"" + 
+					 NewInquirys + "\"}";
+			 
+			 
+			 //output = "Updated successfully";
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while updating the inquiry connection request.";
+			 //output = "Error while updating the inquiry connection request.";
+			 output = "{\"status\":\"error\", \"data\":\"Error while updating the inquiry.\"}";
 			 System.err.println(e.getMessage());
 		 }
 		 
@@ -200,11 +207,15 @@ public class Inquiry
 			 preparedStmt.execute();
 			 con.close();
 			 
-			 output = "Deleted successfully";
+			 String NewInquirys = readInquiries();
+			 output = "{\"status\":\"success\", \"data\": \"" + NewInquirys + "\"}"; 
+			 
+			 //output = "Deleted successfully";
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while deleting the inquiry.";
+			 //output = "Error while deleting the inquiry.";
+			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the notice.\"}";
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
