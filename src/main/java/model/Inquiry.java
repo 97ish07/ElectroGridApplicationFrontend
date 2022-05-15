@@ -85,8 +85,9 @@ public class Inquiry
 					 "<th>Contact Number</th>" +
 					 "<th>Address</th>" +
 					 "<th>Inquiry Type</th>" +
-					 "<th>Message</th></tr>"+
-					 "<th>Update</th><th>Delete</th></tr>";
+					 "<th>Message</th>"+
+					 "<th>Update</th>"+
+					 "<th>Delete</th></tr>";
 					 
 			
 			 String query = "select * from inquiries";
@@ -215,7 +216,7 @@ public class Inquiry
 		 catch (Exception e)
 		 {
 			 //output = "Error while deleting the inquiry.";
-			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the notice.\"}";
+			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the Inquiry.\"}";
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
