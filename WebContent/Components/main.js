@@ -94,7 +94,7 @@ $(document).on("click", ".btnRemove", function(event)
  	{
  		url : "InquiryAPI",
  		type : "DELETE",
- 		data : "noticeId=" + $(this).data("noticeid"),
+ 		data : "inquiryID=" + $(this).data("inquiryID"),
  		dataType : "text",
  		complete : function(response, status)
  		{
@@ -133,29 +133,47 @@ function onItemDeleteComplete(response, status)
 // CLIENT-MODEL================================================================
 function validateItemForm()
 {
-	// PHONE
-	let phone = $("#phone").val().trim();
-	if (!$.isNumeric(phone)) {
-		return "Insert a numerical value for Phone.";
-	}
+ 
+	// NAME
+	if ($("#name").val().trim() == "")
+	 {
+	 return "Insert Name.";
+	 } 
 	 
+	// E-MAIL
+	if ($("#email").val().trim() == "")
+	 {
+	 return "Insert E-mail.";
+	 }
+	 
+	// CONTACT_NUMBER
+	let contactNumber = $("#contactNumber").val().trim();
+	if (!$.isNumeric(contactNumber)) {
+		return "Insert a numerical value for Contact Number.";
+	}
+	
 	// ADDRESS
 	if ($("#address").val().trim() == "")
 	 {
 	 return "Insert Address.";
-	 } 
-	 
-	// NOTE
-	if ($("#note").val().trim() == "")
-	 {
-	 return "Insert Time.";
 	 }
 	 
-	// ZIPCODE
-	let zipcode = $("#zipcode").val().trim();
-	if (!$.isNumeric(zipcode)) {
-		return "Insert a numerical value for Zip Code.";
-	}
+	 
+	// INQUIRY_TYPE
+	if ($("#inquiryType").val().trim() == "")
+	 {
+	 return "Insert Inquiry Type.";
+	 }
+	 
+	 
+	 // MESSAGE
+	if ($("#message").val().trim() == "")
+	 {
+	 return "Insert Message.";
+	 }
+	 
+	 
+	
 	 
 	return true;
 }
