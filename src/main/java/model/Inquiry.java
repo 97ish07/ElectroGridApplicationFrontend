@@ -126,7 +126,7 @@ public class Inquiry
 			 }
 			 
 			 con.close();
-			 // Complete the html table
+			 // Complete the html tables
 			 output += "</table>";
 		 }
 		 catch (Exception e)
