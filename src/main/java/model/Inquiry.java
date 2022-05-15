@@ -207,11 +207,15 @@ public class Inquiry
 			 preparedStmt.execute();
 			 con.close();
 			 
-			 output = "Deleted successfully";
+			 String NewInquirys = readInquiries();
+			 output = "{\"status\":\"success\", \"data\": \"" + NewInquirys + "\"}"; 
+			 
+			 //output = "Deleted successfully";
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while deleting the inquiry.";
+			 //output = "Error while deleting the inquiry.";
+			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the notice.\"}";
 			 System.err.println(e.getMessage());
 		 }
 		 return output;
