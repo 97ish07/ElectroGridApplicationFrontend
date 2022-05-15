@@ -121,8 +121,8 @@ public class Inquiry
 				 
 				 // buttons
 				 
-				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-success' data-noticeid='" + inquiryID+"'></td>"
-						 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-noticeid='" + inquiryID + "'></td></tr>";
+				 output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-success' data-inquiryid='" + inquiryID+"'></td>"
+						 + "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-inquiryid='" + inquiryID + "'></td></tr>";
 			 }
 			 
 			 con.close();
