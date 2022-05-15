@@ -17,6 +17,7 @@ $(document).on("click", "#btnSave", function(event)
  	$("#alertError").hide();
  	
  	// Form validation-------------------
+ 	
 	var status = validateItemForm();
 	if (status != true)
 	{
@@ -30,7 +31,7 @@ $(document).on("click", "#btnSave", function(event)
 	
 	$.ajax(
  	{
- 	url : "NoticesAPI",
+ 	url : "InquiryAPI",
  	type : type,
  	data : $("#formNotice").serialize(),
  	dataType : "text",
@@ -77,21 +78,23 @@ $(document).on("click", ".btnUpdate", function(event)
 {
 	console.log("Update",$("#hidItemIDSave").val());
 	$("#hidItemIDSave").val($(this).closest("tr").find('#hidItemIDUpdate').val());
-	 $("#hidItemIDSave").val($(this).data("noticeid"));
+	 $("#hidItemIDSave").val($(this).data("inquiryID"));
 	 //$("#noticeId").val($(this).closest("tr").find('td:eq(0)').text());
-	 $("#phone").val($(this).closest("tr").find('td:eq(0)').text());
-	 $("#address").val($(this).closest("tr").find('td:eq(1)').text());
-	 $("#note").val($(this).closest("tr").find('td:eq(2)').text());
-	 $("#zipcode").val($(this).closest("tr").find('td:eq(3)').text());
+	 $("#name").val($(this).closest("tr").find('td:eq(0)').text());
+	 $("#email").val($(this).closest("tr").find('td:eq(1)').text());
+	 $("#contactNumber").val($(this).closest("tr").find('td:eq(2)').text());
+	 $("#address").val($(this).closest("tr").find('td:eq(3)').text());
+	 $("#inquiryType").val($(this).closest("tr").find('td:eq(3)').text());
+	 $("#message").val($(this).closest("tr").find('td:eq(3)').text());
 });
 
 $(document).on("click", ".btnRemove", function(event)
 {
  	$.ajax(
  	{
- 		url : "NoticesAPI",
+ 		url : "InquiryAPI",
  		type : "DELETE",
- 		data : "noticeId=" + $(this).data("noticeid"),
+ 		data : "inquiryID=" + $(this).data("inquiryID"),
  		dataType : "text",
  		complete : function(response, status)
  		{
@@ -130,29 +133,47 @@ function onItemDeleteComplete(response, status)
 // CLIENT-MODEL================================================================
 function validateItemForm()
 {
-	// PHONE
-	let phone = $("#phone").val().trim();
-	if (!$.isNumeric(phone)) {
-		return "Insert a numerical value for Phone.";
-	}
+ 
+	// NAME
+	if ($("#name").val().trim() == "")
+	 {
+	 return "Insert Name.";
+	 } 
 	 
+	// E-MAIL
+	if ($("#email").val().trim() == "")
+	 {
+	 return "Insert E-mail.";
+	 }
+	 
+	// CONTACT_NUMBER
+	let contactNumber = $("#contactNumber").val().trim();
+	if (!$.isNumeric(contactNumber)) {
+		return "Insert a numerical value for Contact Number.";
+	}
+	
 	// ADDRESS
 	if ($("#address").val().trim() == "")
 	 {
 	 return "Insert Address.";
-	 } 
-	 
-	// NOTE
-	if ($("#note").val().trim() == "")
-	 {
-	 return "Insert Time.";
 	 }
 	 
-	// ZIPCODE
-	let zipcode = $("#zipcode").val().trim();
-	if (!$.isNumeric(zipcode)) {
-		return "Insert a numerical value for Zip Code.";
-	}
+	 
+	// INQUIRY_TYPE
+	if ($("#inquiryType").val().trim() == "")
+	 {
+	 return "Insert Inquiry Type.";
+	 }
+	 
+	 
+	 // MESSAGE
+	if ($("#message").val().trim() == "")
+	 {
+	 return "Insert Message.";
+	 }
+	 
+	 
+	
 	 
 	return true;
 }
