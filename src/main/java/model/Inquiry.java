@@ -63,6 +63,8 @@ public class Inquiry
 		 return output;
 	}
 	
+	// view
+	
 	public String readInquiries()
 	{
 		 String output = "";
