@@ -14,4 +14,4 @@ This is the frontend development for inquiry management function in eletrogrid w
 
 ![download](https://user-images.githubusercontent.com/81189012/168448712-7defc49d-db0d-4187-9859-76dd190e031c.png)
 
-This is a individual project done for PAF module in 3rd year, SLIIT
+This is a individual project done by Wanninayake K.M.I.S (IT19984674) for PAF module in 3rd year, SLIIT
